@@ -4,6 +4,7 @@ import React from "react";
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
+import { Text, View, StyleSheet } from "react-native";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -12,7 +13,10 @@ export default function TabLayout() {
     <Tabs
       screenOptions={{
         tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
-        headerShown: false,
+        headerShown: true,
+        headerStatusBarHeight: 54,
+        headerTitleStyle: style.headerTitle,
+        headerStyle: style.header,
       }}
     >
       <Tabs.Screen
@@ -24,6 +28,11 @@ export default function TabLayout() {
               name={focused ? "home" : "home-outline"}
               color={color}
             />
+          ),
+          headerRight: () => (
+            <View>
+              <Text style={{ color: "white" }}>home</Text>
+            </View>
           ),
         }}
       />
@@ -64,7 +73,7 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name='settings'
+        name='(modal)'
         options={{
           title: "Settings",
           tabBarIcon: ({ color, focused }) => (
@@ -78,3 +87,14 @@ export default function TabLayout() {
     </Tabs>
   );
 }
+
+const style = StyleSheet.create({
+  headerTitle: {
+    fontSize: 32,
+    fontWeight: 600,
+    lineHeight: 38,
+  },
+  header: {
+    backgroundColor: "#192038",
+  },
+});

@@ -1,9 +1,8 @@
-import { StyleSheet, Image, Platform } from "react-native";
-
+import { StyleSheet } from "react-native";
 import { ThemedView } from "@/components/ThemedView";
-import HelicopterPreview from "@/components/Helicopter/HelicopterPreview";
+import SettingsContainer from "@/components/Settings/SettingsContainer";
 
-export default function Saved() {
+export default function Settings() {
   return (
     <ThemedView
       style={{
@@ -14,17 +13,14 @@ export default function Saved() {
         paddingTop: 25,
       }}
     >
-      <ThemedView style={{ width: "90%", paddingTop: 11, gap: 32 }}>
-        <HelicopterPreview />
-        <HelicopterPreview />
-      </ThemedView>
+      <SettingsContainer />
     </ThemedView>
   );
 }
 
 const styles = StyleSheet.create({
   headerImage: {
-    color: "#192038",
+    color: "#808080",
     bottom: -90,
     left: -35,
     position: "absolute",
