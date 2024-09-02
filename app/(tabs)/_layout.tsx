@@ -1,10 +1,11 @@
-import { Tabs } from "expo-router";
+import { Stack, Tabs } from "expo-router";
 import React from "react";
 
 import { TabBarIcon } from "@/components/navigation/TabBarIcon";
 import { Colors } from "@/constants/Colors";
 import { useColorScheme } from "@/hooks/useColorScheme";
-import { Text, View, StyleSheet } from "react-native";
+import { StyleSheet } from "react-native";
+import HeaderProfileSettings from "@/components/Settings/HeaderProfileSettings";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
@@ -29,11 +30,7 @@ export default function TabLayout() {
               color={color}
             />
           ),
-          headerRight: () => (
-            <View>
-              <Text style={{ color: "white" }}>home</Text>
-            </View>
-          ),
+          headerRight: () => <HeaderProfileSettings />,
         }}
       />
       <Tabs.Screen

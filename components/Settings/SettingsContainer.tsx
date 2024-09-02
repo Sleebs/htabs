@@ -11,11 +11,15 @@ type Props = {};
 const SettingsContainer = (props: Props) => {
   return (
     <ThemedView style={{ width: "80%", paddingTop: 11, gap: 32 }}>
-      <Link href={"/generalSettings"} style={{ width: "100%" }}>
+      <Link href={"/generalSettings"} asChild>
         <SettingsRedirectListItem content='General Settings' />
       </Link>
-      <SettingsRedirectListItem content='Database' />
-      <SettingsRedirectListItem content='htabs' />
+      <Link href={"/databaseSettings"} asChild>
+        <SettingsRedirectListItem content='Database' />
+      </Link>
+      <Link href={"/(innerSettings)/htabsSettings"} asChild>
+        <SettingsRedirectListItem content='htabs' />
+      </Link>
       <SettingsSwitchListItem content='Notifications' state={true} />
     </ThemedView>
   );

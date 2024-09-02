@@ -1,12 +1,14 @@
 import FontAwesome6 from "@expo/vector-icons/FontAwesome6";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
-import React from "react";
+import React, { useState } from "react";
 import { ThemedText } from "../ThemedText";
 import { ThemedView } from "../ThemedView";
+import { Pressable } from "react-native";
 
 type Props = {};
 
 const HelicopterPreview = (props: Props) => {
+  const [bookMark, updateBookmark] = useState<Boolean>(false);
   return (
     <ThemedView
       style={{
@@ -50,7 +52,15 @@ const HelicopterPreview = (props: Props) => {
             Garmin 500 Txi step 2 - MPVK - ...
           </ThemedText>
         </ThemedView>
-        <FontAwesome name='bookmark-o' size={24} color='white' />
+        <Pressable onPress={() => updateBookmark(!bookMark)}>
+          <ThemedView style={{ padding: 10, backgroundColor: "transparent" }}>
+            {bookMark ? (
+              <FontAwesome name='bookmark' size={24} color='white' />
+            ) : (
+              <FontAwesome name='bookmark-o' size={24} color='white' />
+            )}
+          </ThemedView>
+        </Pressable>
       </ThemedView>
     </ThemedView>
   );
